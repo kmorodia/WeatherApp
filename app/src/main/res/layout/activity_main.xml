@@ -22,17 +22,67 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Today's Weather"/>
+            android:layout_centerHorizontal="true"
+            android:text="@string/MainTitle"
+            android:textSize="40sp" />
 
+        <TextView
+            android:id="@+id/currently"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="124dp"
+            android:text="@string/Currently"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/temperatureDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="46dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="154dp"
+            android:text="28°C"
+            android:textSize="80sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="400px"
+            android:layout_height="400px"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="441dp"
+            app:srcCompat="@drawable/sunny" />
+
+        <TextView
+            android:id="@+id/weatherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="60dp"
+            android:text="Mostly Something"
+            android:textSize="32sp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dragview"
-        android:clickable="true"
-        android:focusable="false"
+        android:focusable="true"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -43,10 +93,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16sp"
+                android:paddingRight="16sp"
                 android:layout_centerVertical="true"
                 android:textSize="16sp"
                 android:paddingStart="15dp"
-                android:text="Forecast"/>
+                android:paddingEnd="15dp"
+                android:text="@string/SlideUpTitle"/>
 
         </RelativeLayout>
 
