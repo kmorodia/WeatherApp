@@ -16,4 +16,12 @@ public class Hours {
     public String getDt_txt() {
         return dt_txt;
     }
+
+    public Main getMain() {
+        return main;
+    }
+
+    public ArrayList<Weather> getWeather() {
+        return weather;
+    }
 }
