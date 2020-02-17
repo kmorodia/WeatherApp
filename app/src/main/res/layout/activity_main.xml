@@ -32,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/temperatureDisplay"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="124dp"
-            android:layout_marginBottom="95dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="50dp"
             android:text="@string/Currently"
             android:textSize="32sp" />
 
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="100dp"
             android:text="°C"
             android:textSize="80sp" />
 
@@ -51,11 +51,8 @@
             android:layout_width="200px"
             android:layout_height="200px"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="77dp"
-            android:layout_marginLeft="77dp"
-            android:layout_marginTop="195dp"
-            android:layout_toEndOf="@+id/temperatureDisplay"
-            android:layout_toRightOf="@+id/temperatureDisplay"
+            android:layout_marginTop="110dp"
+            android:layout_alignParentRight="true"
             app:srcCompat="@drawable/sunny" />
 
         <TextView
@@ -63,9 +60,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/temperatureDisplay"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="1dp"
             android:text="description"
             android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/cityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weatherDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="City"
+            android:textSize="32dp" />
+
+        <TextView
+            android:id="@+id/countryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cityTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Country"
+            android:textSize="32dp" />
+
 
     </RelativeLayout>
 

@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private static final String TAG = "MainActivity";
     private TextView temperature;
     private TextView weatherDescription;
+    private TextView cityTextView;
+    private TextView countryTextView;
+
     private Context contexthere;
     int MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 
@@ -55,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         temperature = findViewById(R.id.temperatureDisplay);
         weatherDescription = findViewById(R.id.weatherDescription);
+        cityTextView = findViewById(R.id.cityTextView);
+        countryTextView = findViewById(R.id.countryTextView);
+
 
         ListView listView = findViewById(R.id.listView);
 
@@ -84,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                     temperature.setText(UtilFuns.kelvin2Celsius(weatherData.getList().get(0).getMain().getTemp()));
                     weatherDescription.setText(weatherData.getList().get(0).getWeather().get(0).getMain());
+                    cityTextView.setText(weatherData.getCity().getName());
+                    countryTextView.setText(weatherData.getCity().getCountry());
+
 
                     WeatherAdapter weatherAdapter = new WeatherAdapter(contexthere, UtilFuns.returnDays(weatherData.getList()));
                     listView.setAdapter(weatherAdapter);
