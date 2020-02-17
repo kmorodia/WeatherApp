@@ -1,6 +1,6 @@
 # WeatherApp
 
-MVVM Architecture
-Retrofit to use openweatherAPI
-Gson to serialize json data
-expresso and JUnit for testin
+[1] MVVM Architecture
+[2] Retrofit to use openweatherAPI
+[3] Gson to serialize json data
+[4] expresso and JUnit for testin
