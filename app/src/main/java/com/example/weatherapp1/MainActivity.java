@@ -14,6 +14,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private TextView weatherDescription;
     private TextView cityTextView;
     private TextView countryTextView;
+    private ImageView iconImg;
 
     private Context contexthere;
     int MY_PERMISSIONS_REQUEST_READ_CONTACTS;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         weatherDescription = findViewById(R.id.weatherDescription);
         cityTextView = findViewById(R.id.cityTextView);
         countryTextView = findViewById(R.id.countryTextView);
-
+        iconImg = findViewById(R.id.imageView);
 
         ListView listView = findViewById(R.id.listView);
 
@@ -72,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         OpenWeatherAPI openWeatherAPI = retrofit.create(OpenWeatherAPI.class);
 
         getLocation();
-        //locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-        //Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         Log.d(TAG, "latlnog: "+ latitude + longitude);
 
@@ -92,7 +92,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     weatherDescription.setText(weatherData.getList().get(0).getWeather().get(0).getMain());
                     cityTextView.setText(weatherData.getCity().getName());
                     countryTextView.setText(weatherData.getCity().getCountry());
+                    iconImg.setImageResource(UtilFuns.getImageResource(weatherData.getList().get(0).getWeather().get(0).getIcon()));
 
+                    Log.d(TAG, "weatherIcon: "+weatherData.getList().get(0).getWeather().get(0).getIcon());
 
                     WeatherAdapter weatherAdapter = new WeatherAdapter(contexthere, UtilFuns.returnDays(weatherData.getList()));
                     listView.setAdapter(weatherAdapter);
