@@ -28,23 +28,23 @@ public class UtilFuns {
     public static int getImageResource(String s){
         switch (s.substring(0,2)){
             case "01":
-                return R.drawable.pic01;
+                return R.drawable.qw;
             case "02":
-                return R.drawable.pic02;
+                return R.drawable.qw;
             case "03":
-                return R.drawable.pic03;
+                return R.drawable.qw;
             case "04":
-                return R.drawable.pic04;
+                return R.drawable.qw;
             case "09":
-                return R.drawable.pic09;
+                return R.drawable.qw;
             case "10":
-                return R.drawable.pic10;
+                return R.drawable.qw;
             case "11":
-                return R.drawable.pic11;
+                return R.drawable.qw;
             case "13":
-                return R.drawable.pic13;
+                return R.drawable.qw;
             case "50":
-                return R.drawable.pic50;
+                return R.drawable.qw;
             default:
                 return R.drawable.qw;
         }
