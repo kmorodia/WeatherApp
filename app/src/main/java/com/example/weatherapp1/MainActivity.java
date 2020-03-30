@@ -6,11 +6,14 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -73,9 +76,31 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         OpenWeatherAPI openWeatherAPI = retrofit.create(OpenWeatherAPI.class);
 
+        boolean hasConnectedWifi = false;
+        boolean hasConnectedMobile = false;
+
+        Intent intent = new Intent(getApplicationContext(), RefreshActivity.class);
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    hasConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    hasConnectedMobile = true;
+        }
+
+        Log.d(TAG, "onCreate: NetworkData"+hasConnectedMobile+hasConnectedWifi);
+
+        if(!(hasConnectedMobile||hasConnectedWifi)){
+            startActivity(intent);
+        }
+
         getLocation();
 
-        Log.d(TAG, "latlnog: "+ latitude + longitude);
+        Log.d(TAG, "latlong: "+ latitude + longitude);
 
         Call<WeatherData> call = openWeatherAPI.getWeatherData(String.valueOf((int) latitude), String.valueOf((int) longitude), "c5b93ca42e48d881d625d68b68412037");
 
@@ -84,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
                 if (!response.isSuccessful()) {
                     Log.d(TAG, "onResponse: " + response.code());
+                    startActivity(intent);
                     return;
                 } else {
                     WeatherData weatherData = response.body();
@@ -106,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void onFailure(Call<WeatherData> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
+                startActivity(intent);
             }
         });
 
