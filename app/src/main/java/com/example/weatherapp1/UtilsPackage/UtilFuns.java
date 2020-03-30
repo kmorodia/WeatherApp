@@ -1,8 +1,16 @@
 package com.example.weatherapp1.UtilsPackage;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
 import com.example.weatherapp1.R;
 import com.example.weatherapp1.ViewModel.Hours;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class UtilFuns {
@@ -28,25 +36,43 @@ public class UtilFuns {
     public static int getImageResource(String s){
         switch (s.substring(0,2)){
             case "01":
-                return R.drawable.qw;
+                return R.drawable.first;
             case "02":
-                return R.drawable.qw;
+                return R.drawable.second;
             case "03":
-                return R.drawable.qw;
+                return R.drawable.third;
             case "04":
-                return R.drawable.qw;
+                return R.drawable.fourth;
             case "09":
-                return R.drawable.qw;
+                return R.drawable.fifth;
             case "10":
-                return R.drawable.qw;
+                return R.drawable.sixth;
             case "11":
-                return R.drawable.qw;
+                return R.drawable.seventh;
             case "13":
-                return R.drawable.qw;
+                return R.drawable.eighth;
             case "50":
-                return R.drawable.qw;
+                return R.drawable.ninth;
             default:
                 return R.drawable.qw;
+        }
+    }
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src",src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+            return null;
         }
     }
 

@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         Log.d(TAG, "latlong: "+ latitude + longitude);
 
         Call<WeatherData> call = openWeatherAPI.getWeatherData(String.valueOf((int) latitude), String.valueOf((int) longitude), "c5b93ca42e48d881d625d68b68412037");
-
+        
         call.enqueue(new Callback<WeatherData>() {
             @Override
             public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
